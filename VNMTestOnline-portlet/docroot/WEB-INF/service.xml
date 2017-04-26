@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.vietnamobile">
+	<author>duymb</author>
+	<namespace>iskools</namespace>
+	<entity name="QuestionEntry" local-service="true">
+
+		<!-- PK fields -->
+
+		<column name="questionEntryId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+        <column name="subject" type="String"></column>
+        <column name="levelQuestion" type="double"></column>
+        <column name="answer" type="String"></column>
+        <column name="score" type="double"></column>
+        <column name="questionContent" type="String"></column>
+        <column name="a" type="String"></column>
+        <column name="b" type="String"></column>
+        <column name="c" type="String"></column>
+        <column name="d" type="String"></column>
+        <column name="title" type="String"></column>
+        <column name="selection1" type="String"></column>
+        <column name="selection2" type="String"></column>
+        <column name="selection3" type="String"></column>
+        <column name="selection4" type="String"></column>
+        <column name="status" type="int"></column>
+        
+        <reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
+	</entity>
+	<entity name="OnlinetestEntry" local-service="true">
+
+		<!-- PK fields -->
+
+		<column name="onlinetestEntryId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+        <column name="questionId" type="String"></column>
+        <column name="testStartTime" type="Date"></column>
+        <column name="testEndTime" type="Date"></column>
+        <column name="duration" type="int"></column>
+        <column name="numberOfQuestions" type="int"></column>
+        <column name="title" type="String"></column>
+        <column name="point" type="int"></column>
+        <column name="status" type="int"></column>
+	</entity>
+	<entity name="OnlinetestResultEntry" local-service="true">
+
+		<!-- PK fields -->
+
+		<column name="onlinetestResultEntryId" type="long"
+			primary="true">
+		</column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+        <column name="onlineTestEntryId" type="long"></column>
+        <column name="score" type="double"></column>
+        <column name="answerSelected" type="String"></column>
+        <column name="numberOfWrongAnswer" type="int"></column>
+        <column name="timeRemaining" type="int"></column>
+        <column name="examType" type="String"></column>
+        <column name="questionIds" type="String"></column>
+	</entity>
+	<entity name="SubjectEntry" local-service="true">
+
+		<!-- PK fields -->
+
+		<column name="subjectEntryId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		<column name="course" type="String"></column>
+        <column name="subject" type="String"></column>
+        <column name="description" type="String"></column>
+        <column name="examType" type="String"></column>
+        <column name="totalQuestion" type="int"></column>
+        <column name="status" type="int"></column>
+	</entity>
+	<entity name="VnmArticleReportEntry" local-service="true">
+
+		<!-- PK fields -->
+
+		<column name="vnmArticleReportEntryId" type="long"
+			primary="true">
+		</column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+        <column name="articleId" type="String"></column>
+        <column name="version" type="double"></column>
+        <column name="title" type="String"></column>
+        <column name="action" type="String"></column>
+        <column name="status" type="int"></column>
+	</entity>
+	<entity name="VnmOnlintestReportEntry" local-service="true">
+
+		<!-- PK fields -->
+
+		<column name="vnmOnlintestReportEntryId" type="long"
+			primary="true">
+		</column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+
+
+		<!-- PK fields -->
+
+		<!-- Group instance -->
+
+		<!-- Audit fields -->
+        <column name="onlinetestEntryId" type="long"></column>
+        <column name="questionEntryId" type="long"></column>
+        <column name="correctTime" type="int"></column>
+        <column name="wrongTime" type="int"></column>
+	</entity>
+</service-builder>
