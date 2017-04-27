@@ -290,31 +290,30 @@ public class QuestionEntryLocalServiceWrapper
 
 	@Override
 	public com.vietnamobile.model.QuestionEntry createQuestionEntry(
-		long userId, java.lang.String title, java.lang.String subject,
-		java.lang.String questionContent, java.lang.String solutionA,
-		java.lang.String solutionB, java.lang.String solutionC,
-		java.lang.String solutionD, double level, java.lang.String answer,
-		double score, com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return _questionEntryLocalService.createQuestionEntry(userId, title,
-			subject, questionContent, solutionA, solutionB, solutionC,
-			solutionD, level, answer, score, serviceContext);
-	}
-
-	@Override
-	public com.vietnamobile.model.QuestionEntry updateQuestionEntry(
-		long questionEntryId, long userId, java.lang.String title,
-		java.lang.String subject, java.lang.String questionContent,
+		long userId, java.lang.String title, java.lang.String questionContent,
 		java.lang.String solutionA, java.lang.String solutionB,
 		java.lang.String solutionC, java.lang.String solutionD, double level,
 		java.lang.String answer, double score,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
+		return _questionEntryLocalService.createQuestionEntry(userId, title,
+			questionContent, solutionA, solutionB, solutionC, solutionD, level,
+			answer, score, serviceContext);
+	}
+
+	@Override
+	public com.vietnamobile.model.QuestionEntry updateQuestionEntry(
+		long questionEntryId, long userId, java.lang.String title,
+		java.lang.String questionContent, java.lang.String solutionA,
+		java.lang.String solutionB, java.lang.String solutionC,
+		java.lang.String solutionD, double level, java.lang.String answer,
+		double score, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
 		return _questionEntryLocalService.updateQuestionEntry(questionEntryId,
-			userId, title, subject, questionContent, solutionA, solutionB,
-			solutionC, solutionD, level, answer, score, serviceContext);
+			userId, title, questionContent, solutionA, solutionB, solutionC,
+			solutionD, level, answer, score, serviceContext);
 	}
 
 	@Override
@@ -329,20 +328,19 @@ public class QuestionEntryLocalServiceWrapper
 
 	@Override
 	public java.util.List<com.vietnamobile.model.QuestionEntry> searchQuestioEntry(
-		long userId, java.lang.String subject, java.lang.String content,
-		double level, boolean andSearch)
+		long userId, java.lang.String content, double level, boolean andSearch)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return _questionEntryLocalService.searchQuestioEntry(userId, subject,
-			content, level, andSearch);
+		return _questionEntryLocalService.searchQuestioEntry(userId, content,
+			level, andSearch);
 	}
 
 	@Override
 	public java.util.List<com.vietnamobile.model.QuestionEntry> searchQuestioEntry(
-		long userId, java.lang.String title, java.lang.String subject,
-		java.lang.String content, double level, boolean andSearch)
+		long userId, java.lang.String title, java.lang.String content,
+		double level, boolean andSearch)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _questionEntryLocalService.searchQuestioEntry(userId, title,
-			subject, content, level, andSearch);
+			content, level, andSearch);
 	}
 
 	/**

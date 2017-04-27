@@ -255,21 +255,20 @@ public interface QuestionEntryLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	public com.vietnamobile.model.QuestionEntry createQuestionEntry(
-		long userId, java.lang.String title, java.lang.String subject,
-		java.lang.String questionContent, java.lang.String solutionA,
-		java.lang.String solutionB, java.lang.String solutionC,
-		java.lang.String solutionD, double level, java.lang.String answer,
-		double score, com.liferay.portal.service.ServiceContext serviceContext)
+		long userId, java.lang.String title, java.lang.String questionContent,
+		java.lang.String solutionA, java.lang.String solutionB,
+		java.lang.String solutionC, java.lang.String solutionD, double level,
+		java.lang.String answer, double score,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
 	public com.vietnamobile.model.QuestionEntry updateQuestionEntry(
 		long questionEntryId, long userId, java.lang.String title,
-		java.lang.String subject, java.lang.String questionContent,
-		java.lang.String solutionA, java.lang.String solutionB,
-		java.lang.String solutionC, java.lang.String solutionD, double level,
-		java.lang.String answer, double score,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String questionContent, java.lang.String solutionA,
+		java.lang.String solutionB, java.lang.String solutionC,
+		java.lang.String solutionD, double level, java.lang.String answer,
+		double score, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
@@ -281,13 +280,12 @@ public interface QuestionEntryLocalService extends BaseLocalService,
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.vietnamobile.model.QuestionEntry> searchQuestioEntry(
-		long userId, java.lang.String subject, java.lang.String content,
-		double level, boolean andSearch)
+		long userId, java.lang.String content, double level, boolean andSearch)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.vietnamobile.model.QuestionEntry> searchQuestioEntry(
-		long userId, java.lang.String title, java.lang.String subject,
-		java.lang.String content, double level, boolean andSearch)
+		long userId, java.lang.String title, java.lang.String content,
+		double level, boolean andSearch)
 		throws com.liferay.portal.kernel.exception.SystemException;
 }

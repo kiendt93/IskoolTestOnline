@@ -67,7 +67,7 @@ public class QuestionEntryLocalServiceImpl
 	 *
 	 * Never reference this interface directly. Always use {@link com.vietnamobile.service.QuestionEntryLocalServiceUtil} to access the question entry local service.
 	 */
-	public QuestionEntry createQuestionEntry(long userId, String title,String subject, String questionContent, String solutionA, String solutionB, String solutionC, String solutionD, double level, String answer, 
+	public QuestionEntry createQuestionEntry(long userId, String title, String questionContent, String solutionA, String solutionB, String solutionC, String solutionD, double level, String answer, 
 											 double score, ServiceContext serviceContext) throws SystemException, PortalException
 	{
 		long questionEntryId = counterLocalService.increment();
@@ -83,22 +83,7 @@ public class QuestionEntryLocalServiceImpl
 		questionEntry.setCreateDate(serviceContext.getCreateDate(new Date()));
 		questionEntry.setModifiedDate(serviceContext.getModifiedDate(new Date()));
 		
-		//TimeZone TimeZonedefault = TimeZone.getDefault();
-
-		//TimeZone.setDefault(TimeZone.getTimeZone(user.getTimeZoneId()));
-//		Calendar cal = Calendar.getInstance(user.getTimeZone(),user.getLocale());
-//		Date date = cal.getTime(); // converted date time
-//		System.out.println(date);
-//		
-//		 String timeZone = Calendar.getInstance().getTimeZone().getID();
-//	    Date local = new Date(date.getTime() + TimeZone.getTimeZone(timeZone).getOffset(date.getTime()));
-//	    System.out.println(local);
-//		
-//		questionEntry.setCreateDate(date);
-//		questionEntry.setModifiedDate(date);
-		
 		questionEntry.setTitle(title);
-		questionEntry.setSubject(subject);
 		questionEntry.setLevelQuestion(level);
 		questionEntry.setAnswer(answer);
 		questionEntry.setScore(score);
@@ -130,11 +115,10 @@ public class QuestionEntryLocalServiceImpl
 		
 		return questionEntry;
 	}
-	public QuestionEntry updateQuestionEntry (long questionEntryId, long userId, String title, String subject, String questionContent, String solutionA, String solutionB, String solutionC, String solutionD, double level, String answer, double score, ServiceContext serviceContext) throws SystemException, PortalException
+	public QuestionEntry updateQuestionEntry (long questionEntryId, long userId, String title, String questionContent, String solutionA, String solutionB, String solutionC, String solutionD, double level, String answer, double score, ServiceContext serviceContext) throws SystemException, PortalException
 	{
 		QuestionEntry updateQuestionEntry = questionEntryPersistence.findByPrimaryKey(questionEntryId);
 		updateQuestionEntry.setTitle(title);
-		updateQuestionEntry.setSubject(subject);
 		updateQuestionEntry.setQuestionContent(questionContent);
 		updateQuestionEntry.setA(solutionA);
 		updateQuestionEntry.setB(solutionB);
@@ -194,23 +178,23 @@ public class QuestionEntryLocalServiceImpl
 		
 		return questionEntry;
 	}
-    public List<QuestionEntry> searchQuestioEntry(long userId,String subject,String content,double level, boolean andSearch) throws SystemException
+    public List<QuestionEntry> searchQuestioEntry(long userId,String content,double level, boolean andSearch) throws SystemException
     {
         List<QuestionEntry> result = new ArrayList<QuestionEntry>();
         
-        result = questionEntryPersistence.findWithDynamicQuery(buildDynamicQuery(userId, "",subject, content,level, QuestionEntry.class, andSearch));
+        result = questionEntryPersistence.findWithDynamicQuery(buildDynamicQuery(userId, "", content,level, QuestionEntry.class, andSearch));
         
         return result;
     } 
-    public List<QuestionEntry> searchQuestioEntry(long userId,String title, String subject,String content,double level, boolean andSearch) throws SystemException
+    public List<QuestionEntry> searchQuestioEntry(long userId,String title,String content,double level, boolean andSearch) throws SystemException
     {
         List<QuestionEntry> result = new ArrayList<QuestionEntry>();
         
-        result = questionEntryPersistence.findWithDynamicQuery(buildDynamicQuery(userId, title,subject, content,level, QuestionEntry.class, andSearch));
+        result = questionEntryPersistence.findWithDynamicQuery(buildDynamicQuery(userId, title, content,level, QuestionEntry.class, andSearch));
         
         return result;
     } 
-    private DynamicQuery buildDynamicQuery(long userId, String title, String subject,
+    private DynamicQuery buildDynamicQuery(long userId, String title,
             String content,double level, Class<?> clazz, boolean andSearch)
     {
         DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(clazz,
@@ -236,14 +220,14 @@ public class QuestionEntryLocalServiceImpl
                     .append("%").toString();               
             junction.add(property.like(value));       	
         }
-        if (Validator.isNotNull(subject))
-        {
-            Property property = PropertyFactoryUtil.forName("subject");
-            String value = (new StringBuilder("%")).append(subject)
-                    .append("%").toString();               
-            junction.add(property.like(value));
-            
-        }
+//        if (Validator.isNotNull(subject))
+//        {
+//            Property property = PropertyFactoryUtil.forName("subject");
+//            String value = (new StringBuilder("%")).append(subject)
+//                    .append("%").toString();               
+//            junction.add(property.like(value));
+//            
+//        }
         if (Validator.isNotNull(content))
         {
             Property property = PropertyFactoryUtil.forName("questionContent");

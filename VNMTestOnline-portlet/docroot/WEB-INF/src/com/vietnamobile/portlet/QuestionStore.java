@@ -82,7 +82,7 @@ public class QuestionStore extends MVCPortlet {
  
 	public void addQuestion(ActionRequest actionRequest, ActionResponse actionResponse) throws PortalException, SystemException
 	{
-		String subject = ParamUtil.getString(actionRequest, "subject");
+		
 		String questionContent = ParamUtil.getString(actionRequest, "questionContent");
 		String solutionA = ParamUtil.getString(actionRequest, "solutionA");
 		String solutionB = ParamUtil.getString(actionRequest, "solutionB");
@@ -97,7 +97,7 @@ public class QuestionStore extends MVCPortlet {
                 QuestionEntry.class.getName(), actionRequest);
         try
         {
-        	QuestionEntryLocalServiceUtil.createQuestionEntry(userId, title, subject, questionContent, solutionA, solutionB, solutionC, solutionD, level, answer, score, serviceContext);
+        	QuestionEntryLocalServiceUtil.createQuestionEntry(userId, title, questionContent, solutionA, solutionB, solutionC, solutionD, level, answer, score, serviceContext);
         }
         catch (Exception ex)
         {
@@ -108,7 +108,6 @@ public class QuestionStore extends MVCPortlet {
         finally
         {
             actionResponse.setRenderParameter("mvcPath","/html/questionstore/view.jsp");
-            actionResponse.setRenderParameter("subject", subject);
             actionResponse.setRenderParameter("questionContent", questionContent);
             actionResponse.setRenderParameter("level", String.valueOf(level));
             actionResponse.setRenderParameter("answer", answer);
@@ -118,13 +117,6 @@ public class QuestionStore extends MVCPortlet {
 
 	public void updateQuestion(ActionRequest actionRequest, ActionResponse actionResponse) throws PortalException, SystemException
 	{
-		String subject = ParamUtil.getString(actionRequest, "subject");
-		String subjectOld = ParamUtil.getString(actionRequest, "subjectOld");
-		
-		if(subject.equals("empty") && !subjectOld.equals("empty")){
-			subject = subjectOld;
-		}
-		
 		String questionContent = ParamUtil.getString(actionRequest, "questionContent");
 		String solutionA = ParamUtil.getString(actionRequest, "solutionA");
 		String solutionB = ParamUtil.getString(actionRequest, "solutionB");
@@ -140,7 +132,7 @@ public class QuestionStore extends MVCPortlet {
                 QuestionEntry.class.getName(), actionRequest);
         try
         {
-        	QuestionEntryLocalServiceUtil.updateQuestionEntry(questionEntryId, userId, title,subject, questionContent, solutionA, solutionB, solutionC, solutionD, level, answer, score, serviceContext);
+        	QuestionEntryLocalServiceUtil.updateQuestionEntry(questionEntryId, userId, title, questionContent, solutionA, solutionB, solutionC, solutionD, level, answer, score, serviceContext);
         }
         catch (Exception ex)
         {
@@ -150,7 +142,6 @@ public class QuestionStore extends MVCPortlet {
         finally
         {
             actionResponse.setRenderParameter("mvcPath","/html/questionstore/view.jsp");
-            actionResponse.setRenderParameter("subject", subject);
             actionResponse.setRenderParameter("questionContent", questionContent);
             actionResponse.setRenderParameter("level", String.valueOf(level));
             actionResponse.setRenderParameter("answer", answer);

@@ -87,7 +87,7 @@ public class ReadExcelFile
 				answerSelection = "";
 				if (!isDuplicate(title, content.toString()))
 				{
-					QuestionEntryLocalServiceUtil.createQuestionEntry(userId,title, subject, content.toString(),solutionA,solutionB,solutionC,solutionD, level, answer, score, serviceContext);
+					QuestionEntryLocalServiceUtil.createQuestionEntry(userId,title, content.toString(),solutionA,solutionB,solutionC,solutionD, level, answer, score, serviceContext);
 				}
 			}			
 		}
@@ -153,7 +153,7 @@ public class ReadExcelFile
 				answerSelection = "";
 				if (!isDuplicate(title, content.toString()))
 				{
-					QuestionEntryLocalServiceUtil.createQuestionEntry(userId,title, subject, content.toString(),solutionA,solutionB,solutionC,solutionD, level, answer, score, serviceContext);
+					QuestionEntryLocalServiceUtil.createQuestionEntry(userId,title, content.toString(),solutionA,solutionB,solutionC,solutionD, level, answer, score, serviceContext);
 				}
 			}			
 		}
@@ -188,7 +188,7 @@ public class ReadExcelFile
 		boolean duplicate = false;
 		try
 		{
-			List<QuestionEntry> listTemp =  QuestionEntryLocalServiceUtil.searchQuestioEntry(0, title,"", content.toString(), 0, false);
+			List<QuestionEntry> listTemp =  QuestionEntryLocalServiceUtil.searchQuestioEntry(0, title, content.toString(), 0, false);
 			if (listTemp.size() > 0)
 			{
 				duplicate = true;

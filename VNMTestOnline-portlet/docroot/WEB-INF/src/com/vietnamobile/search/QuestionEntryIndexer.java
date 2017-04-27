@@ -23,6 +23,8 @@ import com.liferay.portal.kernel.search.Summary;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.security.permission.ActionKeys;
 import com.liferay.portal.security.permission.PermissionChecker;
+import com.liferay.portlet.asset.model.AssetCategory;
+import com.liferay.portlet.asset.service.AssetCategoryLocalServiceUtil;
 
 public class QuestionEntryIndexer extends BaseIndexer{
 
@@ -70,8 +72,8 @@ public class QuestionEntryIndexer extends BaseIndexer{
 		
 		Document document = getBaseModelDocument(PORTLET_ID, questionEntry);
 
-        document.addDate(Field.MODIFIED_DATE, questionEntry.getModifiedDate());
-        document.addText(Field.TITLE, questionEntry.getSubject());
+		document.addDate(Field.MODIFIED_DATE, questionEntry.getModifiedDate());
+        document.addText(Field.TITLE, questionEntry.getTitle());
         document.addText(Field.DESCRIPTION, questionEntry.getQuestionContent());
         document.addKeyword(Field.GROUP_ID, getSiteGroupId(questionEntry.getGroupId()));
         document.addKeyword(Field.SCOPE_GROUP_ID, questionEntry.getGroupId());

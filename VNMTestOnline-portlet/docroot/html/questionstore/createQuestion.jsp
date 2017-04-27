@@ -4,7 +4,6 @@
 	String actionViewQuestion = "VIEW";
 	String actionMakeQuestion = "QUESTION_MAKE";
 	String actionReviewQuestion = "QUESTION_MAKE";
-	String subject = renderRequest.getParameter("Subject");
 	String questionContent = renderRequest.getParameter("questionContent");
 	String a = renderRequest.getParameter("a");
 	String b = renderRequest.getParameter("b");
@@ -21,21 +20,6 @@
 <c:if test="<%= themeDisplay.isSignedIn() %>">
 	<%
 	    	long userId = Long.valueOf(request.getRemoteUser());
-			List<SubjectEntry> listOfSubject = SubjectEntryLocalServiceUtil.getAllSubjects();
-			int sizeOfListSubject = listOfSubject.size();
-			
-			JSONArray subjectJsonArr = JSONFactoryUtil.createJSONArray();
-			for(SubjectEntry item: listOfSubject)
-			{
-				JSONObject json =  JSONFactoryUtil.createJSONObject();
-				json.put("course", item.getCourse());
-				json.put("title", item.getSubject());
-				json.put("totalQuestion",item.getTotalQuestion());
-				json.put("description",item.getDescription());
-				json.put("subjectEntryId",item.getSubjectEntryId());
-				subjectJsonArr.put(json);
-			}
-			String subjectJsonList = subjectJsonArr.toString();
 	%>
 	<liferay-portlet:renderURL varImpl="questionContentURL">
 		<portlet:param name="mvcPath" value="/html/questionstore/view.jsp" />
@@ -64,35 +48,15 @@
 				<aui:input type="hidden" name="userId" value="<%=userId%>"/>
 				<liferay-portlet:renderURLParams varImpl="createQuestion" />	
 				<aui:input name="title" value="" required="true" label="Title"></aui:input>	
-				<aui:row>
-					<div id="course" style="display: inline-block;">
-						<aui:select autofocus="true" id="course" inlineField="true" name="course" label= "Course" onChange='fillDetailDate();'>
-							<aui:option value="empty" label="PleaseSelectOneSubject" selected="true"></aui:option>
-							<aui:option value="<%=MATH %>" label="<%=MATH %>"></aui:option>
-							<aui:option value="<%=LITERATURE %>" label="<%=LITERATURE %>"></aui:option>
-							<aui:option value="<%=BIOLOGICAL %>" label="<%=BIOLOGICAL %>"></aui:option>
-							<aui:option value="<%=PHYSICAL %>" label="<%=PHYSICAL %>"></aui:option>
-							<aui:option value="<%=CHEMISTRY %>" label="<%=CHEMISTRY %>"></aui:option>
-							<aui:option value="<%=HISTORY %>" label="<%=HISTORY %>"></aui:option>
-							<aui:option value="<%=GEOGRAPHY %>" label="<%=GEOGRAPHY %>"></aui:option>
-							<aui:option value="<%=FOREIGN_LANGUAGE %>" label="<%=FOREIGN_LANGUAGE %>"></aui:option>
-						</aui:select>
-					</div>
-					<div id="subject" style="display: inline-block;">
-						<aui:select autofocus= "true" inlineField="true" name="subject" label= "Subject">
-							<aui:option value="empty" label="PleaseSelectOneSubject" selected="true"/>
-							<%-- <% for (int i =0;i < sizeOfListSubject; i ++ ) 
-								{
-							%>				
-							<aui:option value="<%=listOfSubject.get(i).getSubject() %>" label="<%=listOfSubject.get(i).getSubject() %>" selected="<%=listOfSubject.get(i).getSubject().equals(subject) %>"/>
-							<%
-								}
-							%> --%>
-						</aui:select>
-					</div>
-					
-					
-				</aui:row>
+				
+				<liferay-ui:panel defaultState="closed" extended="<%= false %>" id="insultsCategorizationPanel" persistState="<%= true %>" title="Subject">
+				    <aui:fieldset>
+				         <liferay-ui:asset-categories-selector >
+				         	<!-- curCategoryIds="38503" >  -->
+				         </liferay-ui:asset-categories-selector>
+				     </aui:fieldset>
+				</liferay-ui:panel>
+				
 				<aui:field-wrapper label="content">
 				<liferay-ui:input-editor name="editorContent" toolbarSet="liferay-article" editorImpl=" <%= EDITOR_WYSIWYG_IMPL_KEY %>"/>
 				</aui:field-wrapper>
@@ -121,7 +85,7 @@
 				</aui:row>
 				
 				<liferay-ui:asset-tags-error />
-				<liferay-ui:panel defaultState="closed" extended="<%= false %>" id="insultsCategorizationPanel" persistState="<%= true %>" title="tags">
+				<liferay-ui:panel defaultState="closed" extended="<%= false %>" id="insultsTagPanel" persistState="<%= true %>" title="tags">
 				    <aui:fieldset>
 				         <liferay-ui:asset-tags-selector  > </liferay-ui:asset-tags-selector>
 				     </aui:fieldset>
@@ -136,41 +100,6 @@
 		</div>
 	</div>
 	
-	<aui:script>
-	
-	function fillDetailDate()
-	{
-		var subjectJson =JSON.parse('<%=subjectJsonList%>');
-		
-		AUI().use('liferay-auto-fields',
-				function(A) 
-				{
-					var course = A.one('#course');
-					var subject = A.one('#subject');
-					if(course.one('select')){
-						var titleKey = course.one('select').get("value");
-						getListSubject(subjectJson, titleKey, subject);
-					}
-				});
-	}
-	function getListSubject(subjectJson,titleKey, subjectSelect)
-	{
-		var message = "<liferay-ui:message key='PleaseSelectOneSubject'/>";
-		subjectSelect.one('select').setHTML('<option value="empty" selected>'+message+'</option>');
-		if (titleKey == "empty")
-		{
-			return 0;
-		}
-		
-		for( i in subjectJson )
-		{
-			if (subjectJson[i].course == titleKey)
-			{
-				subjectSelect.one('select').append('<option value="'+ subjectJson[i].title +'">' + subjectJson[i].title + "</option>");
-			}
-		}
-	}
-	</aui:script>
 	
 </c:if>
 <c:if test ="<%=!themeDisplay.isSignedIn()%>"> 

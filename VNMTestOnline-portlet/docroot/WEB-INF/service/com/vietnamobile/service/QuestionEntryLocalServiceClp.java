@@ -120,8 +120,7 @@ public class QuestionEntryLocalServiceClp implements QuestionEntryLocalService {
 		_methodParameterTypes19 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "double",
-				"java.lang.String", "double",
+				"java.lang.String", "double", "java.lang.String", "double",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -130,8 +129,7 @@ public class QuestionEntryLocalServiceClp implements QuestionEntryLocalService {
 		_methodParameterTypes20 = new String[] {
 				"long", "long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "double",
-				"java.lang.String", "double",
+				"java.lang.String", "double", "java.lang.String", "double",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -144,15 +142,14 @@ public class QuestionEntryLocalServiceClp implements QuestionEntryLocalService {
 		_methodName22 = "searchQuestioEntry";
 
 		_methodParameterTypes22 = new String[] {
-				"long", "java.lang.String", "java.lang.String", "double",
-				"boolean"
+				"long", "java.lang.String", "double", "boolean"
 			};
 
 		_methodName23 = "searchQuestioEntry";
 
 		_methodParameterTypes23 = new String[] {
-				"long", "java.lang.String", "java.lang.String",
-				"java.lang.String", "double", "boolean"
+				"long", "java.lang.String", "java.lang.String", "double",
+				"boolean"
 			};
 	}
 
@@ -708,11 +705,11 @@ public class QuestionEntryLocalServiceClp implements QuestionEntryLocalService {
 
 	@Override
 	public com.vietnamobile.model.QuestionEntry createQuestionEntry(
-		long userId, java.lang.String title, java.lang.String subject,
-		java.lang.String questionContent, java.lang.String solutionA,
-		java.lang.String solutionB, java.lang.String solutionC,
-		java.lang.String solutionD, double level, java.lang.String answer,
-		double score, com.liferay.portal.service.ServiceContext serviceContext)
+		long userId, java.lang.String title, java.lang.String questionContent,
+		java.lang.String solutionA, java.lang.String solutionB,
+		java.lang.String solutionC, java.lang.String solutionD, double level,
+		java.lang.String answer, double score,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
@@ -724,8 +721,6 @@ public class QuestionEntryLocalServiceClp implements QuestionEntryLocalService {
 						userId,
 						
 					ClpSerializer.translateInput(title),
-						
-					ClpSerializer.translateInput(subject),
 						
 					ClpSerializer.translateInput(questionContent),
 						
@@ -772,11 +767,10 @@ public class QuestionEntryLocalServiceClp implements QuestionEntryLocalService {
 	@Override
 	public com.vietnamobile.model.QuestionEntry updateQuestionEntry(
 		long questionEntryId, long userId, java.lang.String title,
-		java.lang.String subject, java.lang.String questionContent,
-		java.lang.String solutionA, java.lang.String solutionB,
-		java.lang.String solutionC, java.lang.String solutionD, double level,
-		java.lang.String answer, double score,
-		com.liferay.portal.service.ServiceContext serviceContext)
+		java.lang.String questionContent, java.lang.String solutionA,
+		java.lang.String solutionB, java.lang.String solutionC,
+		java.lang.String solutionD, double level, java.lang.String answer,
+		double score, com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
@@ -790,8 +784,6 @@ public class QuestionEntryLocalServiceClp implements QuestionEntryLocalService {
 					userId,
 						
 					ClpSerializer.translateInput(title),
-						
-					ClpSerializer.translateInput(subject),
 						
 					ClpSerializer.translateInput(questionContent),
 						
@@ -879,8 +871,7 @@ public class QuestionEntryLocalServiceClp implements QuestionEntryLocalService {
 
 	@Override
 	public java.util.List<com.vietnamobile.model.QuestionEntry> searchQuestioEntry(
-		long userId, java.lang.String subject, java.lang.String content,
-		double level, boolean andSearch)
+		long userId, java.lang.String content, double level, boolean andSearch)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
@@ -889,8 +880,6 @@ public class QuestionEntryLocalServiceClp implements QuestionEntryLocalService {
 					_methodParameterTypes22,
 					new Object[] {
 						userId,
-						
-					ClpSerializer.translateInput(subject),
 						
 					ClpSerializer.translateInput(content),
 						
@@ -920,8 +909,8 @@ public class QuestionEntryLocalServiceClp implements QuestionEntryLocalService {
 
 	@Override
 	public java.util.List<com.vietnamobile.model.QuestionEntry> searchQuestioEntry(
-		long userId, java.lang.String title, java.lang.String subject,
-		java.lang.String content, double level, boolean andSearch)
+		long userId, java.lang.String title, java.lang.String content,
+		double level, boolean andSearch)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
@@ -932,8 +921,6 @@ public class QuestionEntryLocalServiceClp implements QuestionEntryLocalService {
 						userId,
 						
 					ClpSerializer.translateInput(title),
-						
-					ClpSerializer.translateInput(subject),
 						
 					ClpSerializer.translateInput(content),
 						

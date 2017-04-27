@@ -9,7 +9,7 @@
 <c:if test="<%= themeDisplay.isSignedIn() %>"> 
 <%
 	long userId = ParamUtil.getLong(request, "userId");
-	String subject = ParamUtil.getString(request, "subject");
+	/* String subject = ParamUtil.getString(request, "subject"); */
 	String level = ParamUtil.getString(request, "level");
 	String questionContent = ParamUtil.getString(request,"questionContent");
 	String score = ParamUtil.getString(request,"score");
@@ -42,9 +42,9 @@
 <liferay-portlet:renderURL varImpl="makeExam">
 	<portlet:param name="mvcPath" value="/html/questionstore/createTestOnline.jsp" />
 </liferay-portlet:renderURL>
-<liferay-portlet:renderURL varImpl="editSpecialSubject">
+<%-- <liferay-portlet:renderURL varImpl="editSpecialSubject">
 	<portlet:param name="mvcPath" value="/html/questionstore/editSubject.jsp" />
-</liferay-portlet:renderURL>
+</liferay-portlet:renderURL> --%>
 
 <liferay-portlet:renderURL varImpl="searchURL">
         <portlet:param name="mvcPath" value="/html/questionstore/view.jsp" />
@@ -58,7 +58,7 @@
 		<liferay-portlet:renderURLParams varImpl="searchURL" />
 		
 		<liferay-portlet:renderURL varImpl="iteratorURL">
-			<portlet:param name="subject" value="<%= subject %>" />
+			<%-- <portlet:param name="subject" value="<%= subject %>" /> --%>
 			<portlet:param name="questionContent" value="<%= questionContent %>" />			
 			<portlet:param name="mvcPath" value="/html/questionstore/view.jsp" />
 		</liferay-portlet:renderURL>
@@ -68,7 +68,7 @@
 			<liferay-ui:search-form page="/html/questionstore/searchQuestion.jsp" servletContext="<%= application %>"/>
 			<aui:button value="AddQuestion" onClick="<%=addQuestionEntry.toString()%>"/>
 			<aui:button value="MakeExam" onClick="<%=makeExam.toString()%>"/> 
-			<aui:button value="CreateSubject" onClick="<%=editSpecialSubject.toString()%>"/>
+			<%-- <aui:button value="CreateSubject" onClick="<%=editSpecialSubject.toString()%>"/> --%>
 			<liferay-ui:search-container-results>
 				<%
 					DisplayTerms displayTerms = searchContainer.getDisplayTerms(); 
@@ -77,7 +77,7 @@
 				
 					if (displayTerms.isAdvancedSearch())
 					{
-						listOfQuestions =  QuestionEntryLocalServiceUtil.searchQuestioEntry(userId, subject, questionContent, Double.valueOf(level), true);
+						listOfQuestions =  QuestionEntryLocalServiceUtil.searchQuestioEntry(userId, questionContent, Double.valueOf(level), true);
 						List<QuestionEntry> subLists = ListUtil.subList(listOfQuestions,searchContainer.getStart(),searchContainer.getEnd());
 						int sizeOf = listOfQuestions.size();
 						List<QuestionEntry> sortableList = new ArrayList<QuestionEntry>(subLists);
@@ -182,7 +182,6 @@
 				<liferay-ui:search-container-column-text name="Content" value="<%=questionEntry.getQuestionContent()%>"/>							
 				<liferay-ui:search-container-column-text orderable="true" name="CreateDate" value="<%=df.format(questionEntry.getCreateDate())%>" />			
 				<liferay-ui:search-container-column-text orderable="true" name="ModifiedDate" value="<%=df.format(questionEntry.getModifiedDate())%>" />
-				<liferay-ui:search-container-column-text orderable="true" name="Subject" value="<%=questionEntry.getSubject()%>" />
 				<liferay-ui:search-container-column-jsp path="/html/questionstore/actionQuestion.jsp" align="center"/>
 			</liferay-ui:search-container-row>
 			<liferay-ui:search-iterator searchContainer="<%=searchContainer %>" />

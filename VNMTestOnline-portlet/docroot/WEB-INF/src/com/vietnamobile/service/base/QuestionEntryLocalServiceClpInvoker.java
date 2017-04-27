@@ -119,8 +119,7 @@ public class QuestionEntryLocalServiceClpInvoker {
 		_methodParameterTypes76 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "double",
-				"java.lang.String", "double",
+				"java.lang.String", "double", "java.lang.String", "double",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -129,8 +128,7 @@ public class QuestionEntryLocalServiceClpInvoker {
 		_methodParameterTypes77 = new String[] {
 				"long", "long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
-				"java.lang.String", "java.lang.String", "double",
-				"java.lang.String", "double",
+				"java.lang.String", "double", "java.lang.String", "double",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -143,15 +141,14 @@ public class QuestionEntryLocalServiceClpInvoker {
 		_methodName79 = "searchQuestioEntry";
 
 		_methodParameterTypes79 = new String[] {
-				"long", "java.lang.String", "java.lang.String", "double",
-				"boolean"
+				"long", "java.lang.String", "double", "boolean"
 			};
 
 		_methodName80 = "searchQuestioEntry";
 
 		_methodParameterTypes80 = new String[] {
-				"long", "java.lang.String", "java.lang.String",
-				"java.lang.String", "double", "boolean"
+				"long", "java.lang.String", "java.lang.String", "double",
+				"boolean"
 			};
 	}
 
@@ -262,11 +259,10 @@ public class QuestionEntryLocalServiceClpInvoker {
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3], (java.lang.String)arguments[4],
 				(java.lang.String)arguments[5], (java.lang.String)arguments[6],
-				(java.lang.String)arguments[7],
-				((Double)arguments[8]).doubleValue(),
-				(java.lang.String)arguments[9],
-				((Double)arguments[10]).doubleValue(),
-				(com.liferay.portal.service.ServiceContext)arguments[11]);
+				((Double)arguments[7]).doubleValue(),
+				(java.lang.String)arguments[8],
+				((Double)arguments[9]).doubleValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[10]);
 		}
 
 		if (_methodName77.equals(name) &&
@@ -276,11 +272,10 @@ public class QuestionEntryLocalServiceClpInvoker {
 				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
 				(java.lang.String)arguments[4], (java.lang.String)arguments[5],
 				(java.lang.String)arguments[6], (java.lang.String)arguments[7],
-				(java.lang.String)arguments[8],
-				((Double)arguments[9]).doubleValue(),
-				(java.lang.String)arguments[10],
-				((Double)arguments[11]).doubleValue(),
-				(com.liferay.portal.service.ServiceContext)arguments[12]);
+				((Double)arguments[8]).doubleValue(),
+				(java.lang.String)arguments[9],
+				((Double)arguments[10]).doubleValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[11]);
 		}
 
 		if (_methodName78.equals(name) &&
@@ -293,18 +288,17 @@ public class QuestionEntryLocalServiceClpInvoker {
 		if (_methodName79.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes79, parameterTypes)) {
 			return QuestionEntryLocalServiceUtil.searchQuestioEntry(((Long)arguments[0]).longValue(),
-				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
-				((Double)arguments[3]).doubleValue(),
-				((Boolean)arguments[4]).booleanValue());
+				(java.lang.String)arguments[1],
+				((Double)arguments[2]).doubleValue(),
+				((Boolean)arguments[3]).booleanValue());
 		}
 
 		if (_methodName80.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes80, parameterTypes)) {
 			return QuestionEntryLocalServiceUtil.searchQuestioEntry(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
-				(java.lang.String)arguments[3],
-				((Double)arguments[4]).doubleValue(),
-				((Boolean)arguments[5]).booleanValue());
+				((Double)arguments[3]).doubleValue(),
+				((Boolean)arguments[4]).booleanValue());
 		}
 
 		throw new UnsupportedOperationException();

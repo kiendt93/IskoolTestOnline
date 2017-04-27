@@ -81,13 +81,13 @@ public class QuestionEntryAssetRenderer extends BaseAssetRenderer{
 	@Override
 	public String getSummary(Locale arg0) {
 		// TODO Auto-generated method stub
-		return _questionEntry.getSubject();
+		return _questionEntry.getTitle();
 	}
 
 	@Override
 	public String getTitle(Locale arg0) {
 		// TODO Auto-generated method stub
-		return _questionEntry.getSubject();
+		return _questionEntry.getTitle();
 	}
 
 	@Override
